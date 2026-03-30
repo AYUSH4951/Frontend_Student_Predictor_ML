@@ -1,0 +1,359 @@
+/* =============================================
+   PredictionResult.css
+   Dark-first design — matches globals.css
+   ============================================= */
+
+.prediction-result-container {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Centred utility — used for loading & invalid states */
+.prediction-result-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.prediction-result-loading-text,
+.prediction-result-invalid-text {
+  color: var(--muted);
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* ---- Background decorations ---- */
+.prediction-result-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.prediction-result-bg-circle-1 {
+  position: absolute;
+  top: -4rem;
+  right: 15%;
+  width: 28rem;
+  height: 28rem;
+  border-radius: 9999px;
+  background-color: rgba(102, 252, 241, 0.04);
+  filter: blur(64px);
+}
+
+.prediction-result-bg-circle-2 {
+  position: absolute;
+  bottom: -4rem;
+  left: 10%;
+  width: 28rem;
+  height: 28rem;
+  border-radius: 9999px;
+  background-color: rgba(69, 162, 158, 0.04);
+  filter: blur(64px);
+}
+
+/* ---- Navbar ---- */
+.prediction-result-navbar {
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background-color: rgba(var(--background-rgb), 0.85);
+}
+
+.prediction-result-navbar-content {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.prediction-result-navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.prediction-result-back-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.prediction-result-back-button:hover {
+  border-color: var(--primary);
+  background-color: rgba(var(--primary-rgb), 0.08);
+}
+
+.prediction-result-navbar-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+}
+
+.prediction-result-navbar-title h1 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+/* ---- Result section ---- */
+.prediction-result-section {
+  position: relative;
+  z-index: 10;
+  padding: 3rem 1.5rem 5rem;
+}
+
+.prediction-result-content {
+  max-width: 40rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ---- Header ---- */
+.prediction-result-header {
+  text-align: center;
+}
+
+.prediction-result-title {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+}
+
+.prediction-result-subtitle {
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+/* ---- Main card ---- */
+.prediction-result-card {
+  position: relative;
+  border-radius: 1.25rem;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  /* background gradient set inline via category.gradient */
+}
+
+.prediction-result-card-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(var(--primary-rgb), 0.04),
+    transparent 70%
+  );
+}
+
+.prediction-result-card-inner {
+  position: relative;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+@media (min-width: 480px) {
+  .prediction-result-card-inner {
+    padding: 3rem 2.5rem;
+  }
+}
+
+/* ---- Circular progress ---- */
+.prediction-result-score-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.prediction-result-circle-wrapper {
+  position: relative;
+  width: 10rem;
+  height: 10rem;
+}
+
+.prediction-result-circle-svg {
+  width: 100%;
+  height: 100%;
+  /* SVG rotated so arc starts at top — handled inline via transform on circle */
+}
+
+.prediction-result-circle-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.125rem;
+}
+
+.prediction-result-score {
+  font-size: 2.75rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  /* color set inline via category.color */
+}
+
+.prediction-result-score-max {
+  font-size: 0.875rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.prediction-result-score-label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+/* ---- Badge ---- */
+.prediction-result-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  /* bg + border set inline */
+}
+
+.prediction-result-badge-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  flex-shrink: 0;
+  /* bg set inline */
+}
+
+.prediction-result-badge-text {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  /* color set inline */
+}
+
+/* ---- Linear progress bar ---- */
+.prediction-result-bar-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.prediction-result-bar-track {
+  width: 100%;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: rgba(var(--foreground-rgb), 0.08);
+  overflow: hidden;
+}
+
+.prediction-result-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  /* width + bg animated via motion inline */
+}
+
+.prediction-result-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--muted);
+  padding: 0 0.125rem;
+}
+
+/* ---- Insight text ---- */
+.prediction-result-insight {
+  text-align: center;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background-color: rgba(var(--card-rgb), 0.5);
+  width: 100%;
+}
+
+.prediction-result-insight p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--foreground);
+}
+
+/* ---- Action buttons ---- */
+.prediction-result-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 400px) {
+  .prediction-result-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+.prediction-result-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1rem;
+  border-radius: 0.75rem;
+  border: none;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.prediction-result-btn-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.2);
+}
+
+.prediction-result-btn-primary:hover {
+  box-shadow: 0 0 32px rgba(var(--primary-rgb), 0.4);
+}
+
+.prediction-result-btn-secondary {
+  background-color: var(--card);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+.prediction-result-btn-secondary:hover {
+  border-color: var(--primary);
+  background-color: rgba(var(--primary-rgb), 0.06);
+}

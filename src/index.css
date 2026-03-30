@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light theme */
+  --background: 255 255 255;
+  --foreground: 31 40 51;
+  --card: 248 249 250;
+  --card-foreground: 31 40 51;
+  --primary: 69 162 158;
+  --primary-foreground: 255 255 255;
+  --secondary: 102 252 241;
+  --secondary-foreground: 11 12 16;
+  --border: 203 213 225;
+  --background-rgb: 255, 255, 255;
+  --primary-rgb: 69, 162, 158;
+}
+
+.dark {
+  /* Dark theme */
+  --background: 11 12 16;
+  --foreground: 197 198 199;
+  --card: 31 40 51;
+  --card-foreground: 197 198 199;
+  --primary: 102 252 241;
+  --primary-foreground: 11 12 16;
+  --secondary: 69 162 158;
+  --secondary-foreground: 255 255 255;
+  --border: 69 162 158;
+  --background-rgb: 11, 12, 16;
+  --primary-rgb: 102, 252, 241;
+}
+
+* {
+  border-color: rgb(var(--border));
+}
+
+body {
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
+  margin: 0;
+  padding: 0;
+}
+
+/* Fix for visibility - ensure text is visible on dark background */
+.landing-page-title {
+  color: rgb(var(--foreground)) !important;
+}
+
+.landing-page-feature-title,
+.landing-page-cta-title {
+  color: rgb(var(--foreground)) !important;
+}
+
+.landing-page-feature-desc,
+.landing-page-cta-subtitle {
+  color: rgb(var(--foreground)) !important;
+  opacity: 0.8;
+}

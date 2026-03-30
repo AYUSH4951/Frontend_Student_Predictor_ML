@@ -1,0 +1,411 @@
+/* =============================================
+   LandingPage.css  —  fixed version
+   Relies on CSS vars defined in globals.css
+   ============================================= */
+
+.landing-page-container {
+  min-height: 100vh;
+  background-color: var(--background);        /* ✅ solid bg colour from theme */
+  color: var(--foreground);
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ---- Background decorations ---- */
+.landing-page-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.landing-page-bg-circle-1 {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 9999px;
+  filter: blur(48px);
+  /* colour injected inline via isDark check – keep empty here */
+}
+
+.landing-page-bg-circle-2 {
+  position: absolute;
+  bottom: 0;
+  right: 25%;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 9999px;
+  filter: blur(48px);
+}
+
+.landing-page-ring-1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 37.5rem;
+  height: 37.5rem;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+}
+
+.landing-page-ring-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50rem;
+  height: 50rem;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+}
+
+/* ---- Navbar ---- */
+.landing-page-navbar {
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background-color: rgba(var(--background-rgb), 0.8);
+}
+
+.landing-page-navbar-content {
+  /* ✅ Fixed: was invalid "container: mx-auto …" Tailwind syntax */
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.landing-page-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.landing-page-logo-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(to bottom right, var(--primary), var(--secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.landing-page-logo-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 0.5rem;
+  background: rgba(var(--primary-rgb), 0.2);
+  filter: blur(12px);
+}
+
+.landing-page-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  color: var(--foreground);                   /* ✅ explicit colour */
+}
+
+.landing-page-navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 500px;
+}
+
+/* ---- Hero ---- */
+.landing-page-hero {
+  position: relative;
+  z-index: 10;
+  padding: 5rem 1.5rem 8rem;
+}
+
+.landing-page-hero-content {
+  max-width: 80rem;                           /* ✅ was invalid container: syntax */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.landing-page-hero-text {
+  text-align: center;
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.landing-page-badge {
+  margin-bottom: 1.5rem;
+}
+
+.landing-page-badge-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background-color: var(--card);             /* ✅ uses theme card colour */
+  border: 1px solid rgba(var(--primary-rgb), 0.25);
+  margin-bottom: 1.5rem;
+}
+
+.landing-page-badge-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--primary);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.landing-page-badge-text {
+  font-size: 0.875rem;
+  color: var(--primary);
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.landing-page-hero-title {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+  color: var(--foreground);                  /* ✅ explicit – no inline style needed */
+}
+
+.landing-page-hero-gradient {
+  background: linear-gradient(to right, #66FCF1, #45A29E, #66FCF1);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 3s linear infinite;
+}
+
+.landing-page-hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  margin-bottom: 3rem;
+  max-width: 32rem;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  color: var(--muted);                       /* ✅ uses muted variable */
+}
+
+/* ---- CTA Button (hero + cta section share the class) ---- */
+.landing-page-cta-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.landing-page-button-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--primary), var(--secondary), var(--primary));
+  background-size: 200% auto;
+  animation: gradient 3s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.landing-page-cta-button:hover .landing-page-button-glow {
+  opacity: 1;
+}
+
+.landing-page-button-text {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ---- Features ---- */
+.landing-page-features {
+  position: relative;
+  z-index: 10;
+  padding: 0 1.5rem 5rem;
+}
+
+.landing-page-features-content {
+  max-width: 80rem;                          /* ✅ fixed */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.landing-page-features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .landing-page-features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.landing-page-feature-card {
+  position: relative;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: var(--card);            /* ✅ card bg is white in light, dark panel in dark */
+  border: 1px solid var(--border);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+}
+
+.landing-page-feature-glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background: linear-gradient(135deg,
+    rgba(var(--primary-rgb), 0.06),
+    rgba(var(--secondary-rgb), 0.06));
+}
+
+.landing-page-feature-card:hover .landing-page-feature-glow {
+  opacity: 1;
+}
+
+.landing-page-feature-card:hover {
+  border-color: rgba(var(--primary-rgb), 0.35);
+}
+
+.landing-page-feature-content {
+  position: relative;
+}
+
+.landing-page-feature-icon {
+  margin-bottom: 1.5rem;
+}
+
+.landing-page-feature-icon-bg {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+  color: var(--primary);
+  background-color: rgba(var(--primary-rgb), 0.1);  /* ✅ subtle tinted bg */
+}
+
+.landing-page-feature-card:hover .landing-page-feature-icon-bg {
+  transform: scale(1.1);
+}
+
+.landing-page-feature-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  color: var(--foreground);                 /* ✅ always readable */
+}
+
+.landing-page-feature-desc {
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.landing-page-feature-accent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5rem;
+  height: 5rem;
+  filter: blur(16px);
+  transition: all 0.3s;
+  opacity: 0.5;
+  background: radial-gradient(circle, rgba(var(--primary-rgb), 0.3), transparent);
+}
+
+/* ---- CTA Section ---- */
+.landing-page-cta-section {
+  position: relative;
+  z-index: 10;
+  padding: 0 1.5rem 5rem;
+}
+
+.landing-page-cta-content {
+  max-width: 72rem;                          /* ✅ fixed */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.landing-page-cta-card {
+  position: relative;
+  padding: 3rem 2rem;
+  border-radius: 1.5rem;
+  border: 1px solid var(--border);
+  background-color: var(--card);            /* ✅ visible in both themes */
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .landing-page-cta-card {
+    padding: 4rem 3rem;
+  }
+}
+
+.landing-page-cta-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(var(--primary-rgb), 0.05),
+    rgba(var(--secondary-rgb), 0.05));
+  background-size: 200% auto;
+  animation: gradient 5s linear infinite;
+}
+
+.landing-page-cta-text {
+  position: relative;
+  text-align: center;
+}
+
+.landing-page-cta-title {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.landing-page-cta-subtitle {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  color: var(--muted);
+}
+
+/* ---- Animations ---- */
+@keyframes gradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}

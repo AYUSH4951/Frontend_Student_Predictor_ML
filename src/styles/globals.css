@@ -1,0 +1,97 @@
+/* =============================================
+   GLOBAL THEME VARIABLES
+   Dark is the DEFAULT — no class needed.
+   Light is the OVERRIDE — requires .light on <html>.
+   Import this FIRST in main.jsx / index.css
+   ============================================= */
+
+/* ---------- Dark Theme — DEFAULT (always applies) ---------- */
+:root {
+  --background: #0B0C10;
+  --background-rgb: 11, 12, 16;
+
+  --card: #1F2833;
+  --card-rgb: 31, 40, 51;
+
+  --border: #2d3748;
+  --border-rgb: 45, 55, 72;
+
+  --primary: #66FCF1;
+  --primary-rgb: 102, 252, 241;
+  --primary-foreground: #0B0C10;
+
+  --secondary: #45A29E;
+  --secondary-rgb: 69, 162, 158;
+
+  --foreground: #C5C6C7;
+  --foreground-rgb: 197, 198, 199;
+
+  --muted: #9ca3af;
+}
+
+/* ---------- Light Theme — OVERRIDE (only when .light is on <html>) ---------- */
+html.light {
+  --background: #f4f6f8;
+  --background-rgb: 244, 246, 248;
+
+  --card: #ffffff;
+  --card-rgb: 255, 255, 255;
+
+  --border: #dde3ea;
+  --border-rgb: 221, 227, 234;
+
+  --primary: #45A29E;
+  --primary-rgb: 69, 162, 158;
+  --primary-foreground: #ffffff;
+
+  --secondary: #66FCF1;
+  --secondary-rgb: 102, 252, 241;
+
+  --foreground: #1F2833;
+  --foreground-rgb: 31, 40, 51;
+
+  --muted: #6b7280;
+}
+
+/* ---------- Base resets ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Root background — hardcoded per class, no var() ambiguity ---------- */
+
+/* Dark: default AND explicit .dark class */
+html,
+html.dark,
+html.dark body,
+html.dark #root {
+  background-color: #0B0C10;
+  color: #C5C6C7;
+}
+
+/* Light: only when .light is explicitly added by ThemeContext */
+html.light,
+html.light body,
+html.light #root {
+  background-color: #f4f6f8;
+  color: #1F2833;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Utility ---------- */
+.text-primary {
+  color: var(--primary);
+}

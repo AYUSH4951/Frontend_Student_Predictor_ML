@@ -1,0 +1,331 @@
+/* =============================================
+   PredictionFormPage.css
+   Dark-first design — matches globals.css
+   ============================================= */
+
+.prediction-page-container {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ---- Background decorations ---- */
+.prediction-page-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.prediction-page-bg-circle-1 {
+  position: absolute;
+  top: -5rem;
+  left: 20%;
+  width: 28rem;
+  height: 28rem;
+  border-radius: 9999px;
+  background-color: rgba(102, 252, 241, 0.04);
+  filter: blur(64px);
+}
+
+.prediction-page-bg-circle-2 {
+  position: absolute;
+  bottom: -5rem;
+  right: 15%;
+  width: 28rem;
+  height: 28rem;
+  border-radius: 9999px;
+  background-color: rgba(69, 162, 158, 0.04);
+  filter: blur(64px);
+}
+
+/* ---- Navbar ---- */
+.prediction-page-navbar {
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background-color: rgba(var(--background-rgb), 0.85);
+}
+
+.prediction-page-navbar-content {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.prediction-page-navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.prediction-page-back-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.prediction-page-back-button:hover {
+  border-color: var(--primary);
+  background-color: rgba(var(--primary-rgb), 0.08);
+}
+
+.prediction-page-navbar-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+}
+
+.prediction-page-navbar-title h1 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+/* ---- Form section ---- */
+.prediction-page-form-section {
+  position: relative;
+  z-index: 10;
+  padding: 3rem 1.5rem 5rem;
+}
+
+.prediction-page-form-content {
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+/* ---- Header ---- */
+.prediction-page-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.prediction-page-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+  margin-bottom: 0.75rem;
+}
+
+.prediction-page-title-highlight {
+  background: linear-gradient(to right, #66FCF1, #45A29E, #66FCF1);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 3s linear infinite;
+}
+
+.prediction-page-subtitle {
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+/* ---- Form card ---- */
+.prediction-page-form-card {
+  position: relative;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .prediction-page-form-card {
+    padding: 2.5rem;
+  }
+}
+
+.prediction-page-form-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary-rgb), 0.03),
+    rgba(var(--secondary-rgb), 0.03)
+  );
+  pointer-events: none;
+}
+
+/* ---- Form layout ---- */
+.prediction-page-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.prediction-page-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ---- Label ---- */
+.prediction-page-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+/* ---- Select & Input shared base ---- */
+.prediction-page-select,
+.prediction-page-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.625rem;
+  border: 1px solid var(--border);
+
+  /* FIX: hardcode bg/color so browser default white never shows */
+  background-color: var(--background);
+  color: var(--foreground);
+
+  font-size: 0.9375rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* Dropdown arrow for select */
+.prediction-page-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2366FCF1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.875rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+/* Light mode arrow — darker colour */
+html.light .prediction-page-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2345A29E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+}
+
+/* Option colours — inherit from page */
+.prediction-page-select option {
+  background-color: var(--card);
+  color: var(--foreground);
+}
+
+/* Focus state via CSS class (set in JSX) */
+.prediction-page-select.focused,
+.prediction-page-input.focused,
+.prediction-page-select:focus,
+.prediction-page-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.15);
+}
+
+/* Placeholder */
+.prediction-page-input::placeholder {
+  color: var(--muted);
+}
+
+/* Remove number input spinners */
+.prediction-page-input[type='number']::-webkit-inner-spin-button,
+.prediction-page-input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.prediction-page-input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* ---- Scores grid ---- */
+.prediction-page-scores-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 480px) {
+  .prediction-page-scores-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Submit button ---- */
+.prediction-page-submit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  border-radius: 0.75rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: not-allowed;
+  background-color: rgba(var(--primary-rgb), 0.3);
+  color: var(--muted);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+/* Active state when form is valid */
+.prediction-page-submit-button.valid {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  cursor: pointer;
+  box-shadow: 0 0 24px rgba(var(--primary-rgb), 0.25);
+}
+
+.prediction-page-submit-button.valid:hover {
+  box-shadow: 0 0 36px rgba(var(--primary-rgb), 0.4);
+}
+
+/* ---- Animations ---- */
+@keyframes gradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Fix cursor to always show pointer when form is valid */
+.prediction-page-submit-button {
+  cursor: pointer !important;
+}
+
+.prediction-page-submit-button:disabled {
+  cursor: not-allowed !important;
+  opacity: 0.5 !important;
+}
+
+/* Ensure button text and icon are always visible */
+.prediction-page-submit-button span,
+.prediction-page-submit-button svg {
+  pointer-events: none;
+}
+
+/* Remove any default button cursor styles */
+.prediction-page-submit-button[data-valid="true"] {
+  cursor: pointer !important;
+}
+
+.prediction-page-submit-button[data-valid="false"] {
+  cursor: not-allowed !important;
+}
