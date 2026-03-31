@@ -85,7 +85,7 @@ npm run dev
 ## Backend Repository
 
 Backend API for this project:  
-https://github.com/AYUSH4951/Student_Performance_Predictor_ML
+https://github.com/AYUSH4951/Student_Predictor_ML.git
 
 ---
 
