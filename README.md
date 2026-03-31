@@ -16,6 +16,8 @@ This is a web-based frontend application for predicting student performance usin
 
 ## Project Structure
 
+```
+
 Frontend_Student_Predictor_ML/
 │
 ├── student-frontend/
@@ -60,6 +62,7 @@ Frontend_Student_Predictor_ML/
 │   └── vite.config.js
 │
 └── README.md
+```
 
 ---
 
