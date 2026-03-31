@@ -116,7 +116,7 @@ export default function LandingPage() {
             >
               <div className="landing-page-badge-content">
                 <div className="landing-page-badge-dot" />
-                <span className="landing-page-badge-text">ML-Driven Predictions</span>
+                <span className="landing-page-badge-text">Hi, Good to See You</span>
               </div>
             </motion.div>
 
@@ -138,7 +138,7 @@ export default function LandingPage() {
               transition={{ delay: 0.3 }}
               className="landing-page-hero-subtitle"
             >
-              AI-powered insights for smarter academic decisions
+              ML-driven Academic Performance Analysis
             </motion.p>
 
             <motion.div

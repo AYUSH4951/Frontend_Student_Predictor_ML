@@ -161,7 +161,7 @@ export default function PredictionFormPage() {
               Predict Math <span className="prediction-page-title-highlight">Performance</span>
             </h2>
             <p className="prediction-page-subtitle">
-              Enter student details to generate AI-powered predictions
+              Enter student details to generate predictions
             </p>
           </motion.div>
 
